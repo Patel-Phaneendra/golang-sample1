@@ -93,7 +93,8 @@ images:
 options:
  logging: CLOUD_LOGGING_ONLY
 
----
+# hello1 build end
+# Building hello2
 
 steps:
   # Run tests and save to file
