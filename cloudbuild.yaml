@@ -38,7 +38,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'hello1' 
+    dir: 'golang-sample1/hello1' 
   # [END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
@@ -50,16 +50,16 @@ steps:
 
   # [START cloudbuild_go_inspect_yaml]
   # Docker inspect to get image details  
-  - name: gcr.io/cloud-builders/docker
-    entrypoint: /bin/bash
-    args:
-    - -c
-    - |
-      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
-      cat image-digest.txt
-    waitFor: 
-    - push  
-    id: inspect
+  #- name: gcr.io/cloud-builders/docker
+  #  entrypoint: /bin/bash
+  #  args:
+  #  - -c
+  #  - |
+  #    docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
+  #    cat image-digest.txt
+  #  waitFor: 
+  #  - push  
+  #  id: inspect
   # [END cloudbuild_go_inspect_yaml]
  
  
@@ -120,7 +120,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'hello2'  
+    dir: 'golang-sample1/hello2'  
   # [END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
@@ -132,16 +132,16 @@ steps:
 
   # [START cloudbuild_go_inspect_yaml]
   # Docker inspect to get image details  
-  - name: gcr.io/cloud-builders/docker
-    entrypoint: /bin/bash
-    args:
-    - -c
-    - |
-      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
-      cat image-digest.txt
-    waitFor: 
-    - push  
-    id: inspect
+  #- name: gcr.io/cloud-builders/docker
+  #  entrypoint: /bin/bash
+  #  args:
+  #  - -c
+  #  - |
+  #    docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
+  #    cat image-digest.txt
+  #  waitFor: 
+  #  - push  
+  #  id: inspect
   # [END cloudbuild_go_inspect_yaml]
  
  
