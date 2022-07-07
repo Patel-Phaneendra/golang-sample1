@@ -92,6 +92,6 @@ substitutions:
     _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
 images:
   - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
-  
+
 options:
  logging: CLOUD_LOGGING_ONLY
