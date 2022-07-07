@@ -84,19 +84,10 @@ steps:
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
-substitutions:
-    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
-    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
-images:
-  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+#Build1 ends
+#Build2 starts
 
-options:
- logging: CLOUD_LOGGING_ONLY
 
-# hello1 build end
-# Building hello2
-
-steps:
   # Run tests and save to file
   # - name: golang:1.18
   #   entrypoint: /bin/bash
