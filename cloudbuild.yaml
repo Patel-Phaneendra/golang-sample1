@@ -1,0 +1,94 @@
+# [START cloudbuild_go_image_yaml] 
+# mb-microservices-template/microservices/mobileapp/login >> feature branch
+# Docker Build
+  steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello1/.']
+    dir: 'golang-sample1/hello1' 
+  # [END cloudbuild_go_image_yaml]
+
+  # [START cloudbuild_go_push_yaml]
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
+    id: push
+  # [END cloudbuild_go_push_yaml]
+
+  # [START cloudbuild_go_inspect_yaml]
+  # Docker inspect to get image details  
+  - name: gcr.io/cloud-builders/docker
+    entrypoint: /bin/bash
+    args:
+    - -c
+    - |
+      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
+      cat image-digest.txt
+    waitFor: 
+    - push  
+    id: inspect
+  # [END cloudbuild_go_inspect_yaml]
+
+  # [START cloudbuild_go_deploy_yaml]
+# Deploy to GKE 
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=golang-sample1/hello1/.
+    - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+    - --location=asia-south1
+    - --cluster=hbl-poc-mb-rw-dm-cluster
+# [END cloudbuild_go_deploy_yaml]
+substitutions:
+    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
+    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+images:
+  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+
+---
+
+# mb-microservices-template/microservices/mobileapp/sms-verify >> feature branch
+# Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello2/.']
+    dir: 'golang-sample1/hello2'
+  # [END cloudbuild_go_image_yaml]
+
+  # [START cloudbuild_go_push_yaml]
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
+    id: push
+  # [END cloudbuild_go_push_yaml]
+
+  # [START cloudbuild_go_inspect_yaml]
+  # Docker inspect to get image details  
+  - name: gcr.io/cloud-builders/docker
+    entrypoint: /bin/bash
+    args:
+    - -c
+    - |
+      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
+      cat image-digest.txt
+    waitFor: 
+    - push  
+    id: inspect
+  # [END cloudbuild_go_inspect_yaml]
+
+  # [START cloudbuild_go_deploy_yaml]
+# Deploy to GKE 
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=golang-sample1/hello2/.
+    - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+    - --location=asia-south1
+    - --cluster=hbl-poc-mb-rw-dm-cluster
+# [END cloudbuild_go_deploy_yaml]
+
+substitutions:
+    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
+    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+images:
+  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
