@@ -37,7 +37,7 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello1/.']
+           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello1']
     dir: 'golang-sample1/hello1' 
   # [END cloudbuild_go_image_yaml]
   
@@ -119,7 +119,7 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello2/.']
+           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', 'golang-sample1/hello2']
     dir: 'golang-sample1/hello2'  
   # [END cloudbuild_go_image_yaml]
   
