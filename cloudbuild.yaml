@@ -68,7 +68,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=golang-sample1/hello1/.
+    - --filename=hello1/.
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=hbl-poc-mb-rw-dm-cluster
@@ -150,7 +150,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=golang-sample1/hello2/.
+    - --filename=hello2/.
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=hbl-poc-mb-rw-dm-cluster
