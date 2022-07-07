@@ -68,7 +68,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=/hello1.yaml
+    - --filename=hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=hbl-poc-mb-rw-dm-cluster
@@ -142,7 +142,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=/hello2.yaml
+    - --filename=hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=hbl-poc-mb-rw-dm-cluster
