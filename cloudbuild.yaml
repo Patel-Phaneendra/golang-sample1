@@ -63,13 +63,13 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
- artifacts:
+  artifacts:
    objects:
      location: gs://mb-devops/
      paths:
        - ${SHORT_SHA}_test1_log.xml
- [END cloudbuild_go_logs_yaml]
- Store images in Google Artifact Registry
+# [END cloudbuild_go_logs_yaml]
+# Store images in Google Artifact Registry
 
 #Build1 ends
 #Build2 starts
@@ -97,10 +97,10 @@ steps:
   # [START cloudbuild_go_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
-           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
     dir: 'hello2'  
-  # [END cloudbuild_go_image_yaml]
+
+#[END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
   # Docker push to Google Artifact Registry
