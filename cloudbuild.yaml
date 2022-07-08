@@ -94,13 +94,16 @@ artifacts:
 #    - '-Dsonar.sources=golang-sample/.'
 #    - '-Dsonar.login=b899c4c79075847d6bb77f1fcc9695d88bdb3ee0'
 
-  # [START cloudbuild_go_image_yaml]
-  # Docker Build
+...
+
+# [ cloudbuild_go_image_yaml]
+# Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'hello2'
-    
-#[END cloudbuild_go_image_yaml]
+    args: ['build', '-t', 
+           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
+    dir: 'hello1'
+
+#[ cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
   # Docker push to Google Artifact Registry
@@ -133,9 +136,8 @@ artifacts:
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
-# [END cloudbuild_go_deploy_yaml]
-
-# [START cloudbuild_go_logs_yaml]
+# [ cloudbuild_go_deploy_yaml]
+# [ cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
 artifacts:
     objects:
