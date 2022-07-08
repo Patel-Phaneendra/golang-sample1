@@ -63,7 +63,7 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-  artifacts:
+artifacts:
     objects:
      location: gs://mb-devops/
      paths:
@@ -137,7 +137,7 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-  artifacts:
+artifacts:
     objects:
      location: gs://mb-devops/
      paths:
