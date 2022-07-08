@@ -63,8 +63,8 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-  artifacts:
-   objects:
+  - artifacts:
+     objects:
      location: gs://mb-devops/
      paths:
        - ${SHORT_SHA}_test1_log.xml
@@ -137,8 +137,8 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
- artifacts:
-   objects:
+ - artifacts:
+    objects:
      location: gs://mb-devops/
      paths:
        - ${SHORT_SHA}_test2_log.xml
