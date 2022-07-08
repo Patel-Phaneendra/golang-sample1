@@ -72,6 +72,17 @@ artifacts:
 # Store images in Google Artifact Registry
 
 #Build1 ends
+substitutions:
+    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
+    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+images:
+  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+
+options:
+ logging: CLOUD_LOGGING_ONLY
+ 
+...
+
 #Build2 starts
 
 
@@ -93,8 +104,6 @@ artifacts:
 #    - '-Dsonar.projectKey=mb'
 #    - '-Dsonar.sources=golang-sample/.'
 #    - '-Dsonar.login=b899c4c79075847d6bb77f1fcc9695d88bdb3ee0'
-
-...
 
 # [ cloudbuild_go_image_yaml]
 # Docker Build
