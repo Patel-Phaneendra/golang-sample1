@@ -1,16 +1,4 @@
-# Copyright 2020 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+
 # [START cloudbuild_go_yaml]
 # [START cloudbuild_go_test_yaml]
 steps:
@@ -68,7 +56,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=hello1.yaml
+    - --filename=/hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
@@ -76,13 +64,13 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-# artifacts:
-#   objects:
-#     location: gs://mb-devops/
-#     paths:
-#       - ${SHORT_SHA}_test_log.xml
-# [END cloudbuild_go_logs_yaml]
-# Store images in Google Artifact Registry
+ artifacts:
+   objects:
+     location: gs://mb-devops/
+     paths:
+       - ${SHORT_SHA}_test1_log.xml
+ [END cloudbuild_go_logs_yaml]
+ Store images in Google Artifact Registry
 
 #Build1 ends
 #Build2 starts
@@ -142,7 +130,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=hello2.yaml
+    - --filename=hello2/hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
@@ -150,11 +138,11 @@ steps:
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-# artifacts:
-#   objects:
-#     location: gs://mb-devops/
-#     paths:
-#       - ${SHORT_SHA}_test_log.xml
+ artifacts:
+   objects:
+     location: gs://mb-devops/
+     paths:
+       - ${SHORT_SHA}_test2_log.xml
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
