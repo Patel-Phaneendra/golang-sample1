@@ -32,7 +32,7 @@ steps:
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
-    id: push
+    id: push01
   # [END cloudbuild_go_push_yaml]
 
   # [START cloudbuild_go_inspect_yaml]
@@ -104,7 +104,7 @@ steps:
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
-    id: push
+    id: push02
   # [END cloudbuild_go_push_yaml]
 
   # [START cloudbuild_go_inspect_yaml]
@@ -130,7 +130,7 @@ steps:
     - --filename=hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=poc-cluster
+    - --cluster=mbrw-dev-cluster-4
 # [END cloudbuild_go_deploy_yaml]
 
 # [START cloudbuild_go_logs_yaml]
