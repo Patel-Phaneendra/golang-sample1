@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: asia-south1-docker.pkg.dev/hbl-poc-digfac-anthos-prj/mb-devops/myimage
+        image: asia-south1-docker.pkg.dev/hbl-poc-digfac-anthos-prj/mb-devops/myimage001
         ports:
         - containerPort: 8081
         env:
