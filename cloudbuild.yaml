@@ -132,7 +132,7 @@ steps:
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage002:$SHORT_SHA
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
-    output: \output/hello2/.
+    - --output=\output/hello2
     id: hello2
 # [END cloudbuild_go_deploy_yaml]
 
