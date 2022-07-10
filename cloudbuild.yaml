@@ -57,7 +57,7 @@ steps:
     - run
     - --filename=hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage001:$SHORT_SHA
-    - --location=asia-south1-a
+    - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
 # [END cloudbuild_go_deploy_yaml]
 
