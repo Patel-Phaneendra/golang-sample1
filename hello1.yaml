@@ -7,6 +7,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello1
+  labels:
+    app.kubernetes.io/name: hello1
 spec:
   replicas: 1
   selector:
