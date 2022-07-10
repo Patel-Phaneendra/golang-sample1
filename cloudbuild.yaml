@@ -52,7 +52,7 @@ steps:
  
 # [START cloudbuild_go_deploy_yaml]
 # Deploy to GKE 
-  - name: "gcr.io/cloud-builders/gke-deploy01"
+  - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
     - --filename=hello1.yaml
@@ -124,7 +124,7 @@ steps:
  
 # [START cloudbuild_go_deploy_yaml]
 # Deploy to GKE 
-  - name: "gcr.io/cloud-builders/gke-deploy02"
+  - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
     - --filename=hello2.yaml
