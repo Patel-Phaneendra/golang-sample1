@@ -135,6 +135,8 @@ steps:
     - --output=\output/hello2
     id: hello2
 # [END cloudbuild_go_deploy_yaml]
+options:
+    substitution_option: 'ALLOW_LOOSE'
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
