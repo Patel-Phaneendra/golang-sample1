@@ -32,7 +32,7 @@ steps:
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
-    id: push1
+    id: push
   # [END cloudbuild_go_push_yaml]
 
   # [START cloudbuild_go_inspect_yaml]
@@ -58,34 +58,21 @@ steps:
     - --filename=hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=mbrw-dev-cluster-4
+    - --cluster=hbl-poc-mb-rw-dm-cluster
 # [END cloudbuild_go_deploy_yaml]
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-artifacts:
-    objects:
-     location: gs://mb-devops/
-     paths:
-       - ${SHORT_SHA}_test1_log.xml
+# artifacts:
+#   objects:
+#     location: gs://mb-devops/
+#     paths:
+#       - ${SHORT_SHA}_test_log.xml
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
-#Build1 ends
-substitutions:
-    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
-    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
-images:
-  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
 
-options:
- logging: CLOUD_LOGGING_ONLY
-
-
-
-#Build2 starts
-
-
+steps:
   # Run tests and save to file
   # - name: golang:1.18
   #   entrypoint: /bin/bash
@@ -105,20 +92,19 @@ options:
 #    - '-Dsonar.sources=golang-sample/.'
 #    - '-Dsonar.login=b899c4c79075847d6bb77f1fcc9695d88bdb3ee0'
 
-# [ cloudbuild_go_image_yaml]
-# Docker Build
+  # [START cloudbuild_go_image_yaml]
+  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'hello1'
-
-#[ cloudbuild_go_image_yaml]
+    dir: 'hello2'  
+  # [END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
-    id: push2
+    id: push
   # [END cloudbuild_go_push_yaml]
 
   # [START cloudbuild_go_inspect_yaml]
@@ -144,15 +130,16 @@ options:
     - --filename=hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=mbrw-dev-cluster-4
-# [ cloudbuild_go_deploy_yaml]
-# [ cloudbuild_go_logs_yaml]
+    - --cluster=hbl-poc-mb-rw-dm-cluster
+# [END cloudbuild_go_deploy_yaml]
+
+# [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-artifacts:
-    objects:
-     location: gs://mb-devops/
-     paths:
-       - ${SHORT_SHA}_test2_log.xml
+# artifacts:
+#   objects:
+#     location: gs://mb-devops/
+#     paths:
+#       - ${SHORT_SHA}_test_log.xml
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
