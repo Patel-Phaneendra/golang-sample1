@@ -59,7 +59,6 @@ steps:
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage001:$SHORT_SHA
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
-    id: hello1
 # [END cloudbuild_go_deploy_yaml]
 
 # [START cloudbuild_go_logs_yaml]
@@ -133,10 +132,7 @@ steps:
     - --location=asia-south1
     - --cluster=mbrw-dev-cluster-4
     - --output=\output/hello2
-    id: hello2
 # [END cloudbuild_go_deploy_yaml]
-options:
-    substitution_option: 'ALLOW_LOOSE'
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
@@ -151,6 +147,8 @@ options:
 substitutions:
     _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
     _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+
+# List built images in cloudbuild history
 images:
   - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage001:$SHORT_SHA
   - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage002:$SHORT_SHA
