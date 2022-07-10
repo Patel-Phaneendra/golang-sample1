@@ -58,16 +58,16 @@ steps:
     - --filename=hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=hbl-poc-mb-rw-dm-cluster
+    - --cluster=poc-cluster
 # [END cloudbuild_go_deploy_yaml]
 
 # [START cloudbuild_go_logs_yaml]
 # Save test logs to Google Cloud Storage
-# artifacts:
-#   objects:
-#     location: gs://mb-devops/
-#     paths:
-#       - ${SHORT_SHA}_test_log.xml
+ artifacts:
+   objects:
+     location: gs://mb-devops/
+     paths:
+       - ${SHORT_SHA}_test_log.xml
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
@@ -130,7 +130,7 @@ steps:
     - --filename=hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=hbl-poc-mb-rw-dm-cluster
+    - --cluster=poc-cluster
 # [END cloudbuild_go_deploy_yaml]
 
 # [START cloudbuild_go_logs_yaml]
