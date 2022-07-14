@@ -58,7 +58,7 @@ steps:
     - --filename=hello1.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage001:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=mbrw-dev-cluster-4
+    - --cluster=hbl-poc-mb-rw-dm-cluster
     - --output=\output/hello1
 # [END cloudbuild_go_deploy_yaml]
 
@@ -131,7 +131,7 @@ steps:
     - --filename=hello2.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage002:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=mbrw-dev-cluster-4
+    - --cluster=hbl-poc-mb-rw-dm-cluster
     - --output=\output/hello2
 # [END cloudbuild_go_deploy_yaml]
 
