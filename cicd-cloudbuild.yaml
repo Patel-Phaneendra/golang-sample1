@@ -10,7 +10,7 @@ steps:
 
 #Push the image  
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','asia-south1-docker.pkg.dev/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'] 
+  args: ['push','asia-south1-docker.pkg.dev/${_PROJECT}/mb-devops/${_CONTAINERNAME}:${_VERSION}'] 
 
 #Update the existing container image using kubectl set
 - name: 'gcr.io/cloud-builders/kubectl'
