@@ -5,7 +5,7 @@ steps:
 
 #Build the image 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
+  args: ['build','-t','asia-south1-docker.pkg.dev/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
   dir: 'hello1' 
 
 #Push the image  
@@ -18,7 +18,7 @@ steps:
   - 'set'
   - 'image'
   - 'deployment/${_DEPLOYMENTNAME}'
-  - '${_CONTAINERNAME}=gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'
+  - '${_CONTAINERNAME}=asia-south1-docker.pkg.dev/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
