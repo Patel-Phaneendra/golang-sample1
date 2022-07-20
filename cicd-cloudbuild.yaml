@@ -5,13 +5,13 @@ steps:
 
 #Build the image 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
+  args: ['build','-t','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','golang-sample1/hello1/.']
   dir: 'hello1' 
 
 #Push the image  
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
-  
+  args: ['push','asia-south1-docker.pkg.dev/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}'] 
+
 #Update the existing container image using kubectl set
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
