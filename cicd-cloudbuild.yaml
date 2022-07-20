@@ -29,9 +29,9 @@ substitutions:
     _ZONE: asia-south1
     _GKE_CLUSTER: mbrw-dev-cluster-4
     
-    #Repository Specific configuration. DevOps can change this settings
+    #Repository Specific configuration. 
     _DEPLOYMENTNAME: hello-world-service 
-    _CONTAINERNAME: hello-world-service    
+    _CONTAINERNAME: mb-devops    
     _REPO_NAME: github_patel-phaneendra_golang-sample1
     
     # Developers ONLY change
