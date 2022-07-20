@@ -16,11 +16,10 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=hello1.yaml
+  - --filename=hello-service.yaml
   - --image=asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}
   - --location=${_ZONE}
   - --cluster=${_GKE_CLUSTER}
-  dir: 'hello1'
 
 #Update the existing container image using kubectl set
 #- name: 'gcr.io/cloud-builders/kubectl'
