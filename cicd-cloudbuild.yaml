@@ -13,24 +13,24 @@ steps:
   args: ['push','asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}'] 
 
 # Deploy to GKE 
-- name: "gcr.io/cloud-builders/gke-deploy"
-  args:
-  - run
-  - --filename=hello-service.yaml
-  - --image=asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}
-  - --location=${_ZONE}
-  - --cluster=${_GKE_CLUSTER}
+#- name: "gcr.io/cloud-builders/gke-deploy"
+#  args:
+#  - run
+#  - --filename=hello-service.yaml
+#  - --image=asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}
+#  - --location=${_ZONE}
+#  - --cluster=${_GKE_CLUSTER}
 
 #Update the existing container image using kubectl set
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  args:
-#  - 'set'
-#  - 'image'
-#  - 'deployment/${_DEPLOYMENTNAME}'
-#  - '${_CONTAINERNAME}=asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}'
-#  env:
-#  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
-#  - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/${_DEPLOYMENTNAME}'
+  - '${_CONTAINERNAME}=asia-south1-docker.pkg.dev/${_PROJECT}/${_REPO_NAME}/${_CONTAINERNAME}:${_VERSION}'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
   
 substitutions:
     #GCP Specific configuration. Please DON'T change anything
@@ -44,7 +44,7 @@ substitutions:
     _REPO_NAME: mb-devops
     
     # Developers ONLY change
-    _VERSION: v1.0
+    _VERSION: v2.0
     
 options:
     substitution_option: 'ALLOW_LOOSE'
