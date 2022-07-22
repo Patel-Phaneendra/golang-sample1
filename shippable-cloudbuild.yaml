@@ -1,11 +1,10 @@
 steps:
-- ci:
-    - ./build.sh
-    - ./tag_image.sh
-    
 #Clone from Google Cloud Source Repository  
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone','https://source.developers.google.com/p/${_PROJECT}/r/github_patel-phaneendra_golang-sample1']
+  ci:
+    - ./build.sh
+    - ./tag_image.sh
 
 #Build the image 
 - name: 'gcr.io/cloud-builders/docker'
